@@ -5,12 +5,10 @@ _G.AutoStamper = true -- Probably gives more coins too
 
 --[[
 
-for "Club Roblox", some cheap vers adopt me ig
+for "Club Roblox" pizzeria, some cheap vers adopt me ig
 link https://www.roblox.com/games/3457390032
 
-requested, im no lua god so if something i couldve done diff or better, pls lmk so i learn
-
-this is all just remotes, ik you can all just make it one simple loop but why not like this if it works the same :3
+this is all just remotes
 
 ]]
 
