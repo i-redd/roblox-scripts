@@ -50,7 +50,7 @@ spawn(function()
     
     --// Hidden Functions
     setsimulationradius(0, 0)
-    setfpscap(5)
+    setfpscap(1)
     
     --// Physical/UI Derender
     for _, v in next, game:GetDescendants() do
