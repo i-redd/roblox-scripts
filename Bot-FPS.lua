@@ -1,8 +1,4 @@
 coroutine.wrap(function()
-
-end)()
-
-coroutine.wrap(function()
     repeat
         for i, v in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
                 if v.Name == "MoneyDrop" then
