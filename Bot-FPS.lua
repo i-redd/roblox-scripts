@@ -4,9 +4,9 @@ coroutine.wrap(function() -- Deletes All Money every 120 seconds
             v:Destroy()
         end
     end
-wait(120)
-until false
- end)()
+        wait(120)
+        until false
+end)()
 
  coroutine.wrap(function()
     repeat
