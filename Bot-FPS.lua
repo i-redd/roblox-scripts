@@ -176,6 +176,4 @@ spawn(function()
     end)
 end)
 
-spawn(function()
-   print("passed all")
-end)
+print("passed all")
