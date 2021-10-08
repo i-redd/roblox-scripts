@@ -1,17 +1,23 @@
-spawn(function()
-for i, v in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
-        if v.Name == "MoneyDrop" then
-            v:Destroy()
-        end
-    end
-wait(120)
-until false
-end)
+coroutine.wrap(function()
 
-spawn(function()
+end)()
+
+coroutine.wrap(function()
+    repeat
+        for i, v in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+                if v.Name == "MoneyDrop" then
+                    v:Destroy()
+                end
+            end
+        wait(120)
+        until false
+end)()
+
+coroutine.wrap(function()
     repeat
         wait()
     until game:IsLoaded()
+
     local function Check(v)
         if v:IsA'Part' then
             v.Material = Enum.Material.Plastic;
@@ -36,14 +42,15 @@ spawn(function()
     end;
     
     workspace.DescendantAdded:Connect(Check);
-end)
+end)()
 
-spawn(function()
+coroutine.wrap(function()
     repeat
         wait()
     until game:IsLoaded()
-    local RemovePlrGuis = true
-    local No3DRendering = true
+
+    local RemovePlrGuis = false
+    local No3DRendering = false
     
     if not game['Loaded'] or not game:GetService('Players')['LocalPlayer'] then
         game['Loaded']:Wait();
@@ -52,17 +59,14 @@ spawn(function()
     end
     
     local LP = game:GetService('Players').LocalPlayer
-    --// Physics Settings
     settings().Physics.PhysicsEnvironmentalThrottle = 1
     settings().Rendering.QualityLevel = 'Level01'
     UserSettings():GetService('UserGameSettings').MasterVolume = 0
-    -- Comment line 7 if you want to be able to hear your game, keep it the same if you're using it for bots.
     
-    --// Hidden Functions
+    
     setsimulationradius(0, 0)
     setfpscap(1)
     
-    --// Physical/UI Derender
     for _, v in next, game:GetDescendants() do
         if v:IsA('Workspace') then
             sethiddenproperty(v, 'StreamingTargetRadius', 64)
@@ -174,6 +178,6 @@ spawn(function()
             v.Volume = 0
         end
     end)
-end)
+end)()
 
-print("passed all")
+warn("yepcock")
