@@ -9,7 +9,7 @@ coroutine.wrap(function()
                     v:Destroy()
                 end
             end
-        wait(120)
+        wait(60)
         until false
 end)()
 
