@@ -23,8 +23,11 @@ end)()
     settings().Physics.PhysicsEnvironmentalThrottle = 1
     settings().Rendering.QualityLevel = 'Level01'
     UserSettings():GetService('UserGameSettings').MasterVolume = 0
+    
     setsimulationradius(0, 0)
     setfpscap(1)
+    print("setting fps here")
+    
     for _, v in next, game:GetDescendants() do
         if v:IsA('Workspace') then
             sethiddenproperty(v, 'StreamingTargetRadius', 64)
