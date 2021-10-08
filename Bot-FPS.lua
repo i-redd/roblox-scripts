@@ -1,33 +1,68 @@
-coroutine.wrap(function() -- Deletes All Money every 120 seconds
-    for i, v in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
+spawn(function()
+for i, v in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
         if v.Name == "MoneyDrop" then
             v:Destroy()
         end
     end
-        wait(120)
-        until false
-end)()
+wait(120)
+until false
+end)
 
- coroutine.wrap(function()
+spawn(function()
+    repeat
+        wait()
+    until game:IsLoaded()
+    local function Check(v)
+        if v:IsA'Part' then
+            v.Material = Enum.Material.Plastic;
+        elseif v.ClassName:match'Light' then
+            v:Destroy'';
+        elseif v.ClassName:match'Effect' then
+            pcall(function()
+                v.Enabled = false;
+            end);
+        end;
+    end;
+    
+    local Lighting = game:GetService'Lighting';
+    for i, v in next, Lighting:GetChildren'' do
+        Check(v);
+    end;
+    
+    Lighting.DescendantAdded:Connect(Check);
+    
+    for i, v in next, workspace:GetDescendants() do
+        Check(v);
+    end;
+    
+    workspace.DescendantAdded:Connect(Check);
+end)
+
+spawn(function()
     repeat
         wait()
     until game:IsLoaded()
     local RemovePlrGuis = true
     local No3DRendering = true
+    
     if not game['Loaded'] or not game:GetService('Players')['LocalPlayer'] then
         game['Loaded']:Wait();
         game:WaitForChild(game:GetService('Players'));
         game:GetService('Players'):WaitForChild(game:GetService('Players').LocalPlayer.Name)
     end
+    
     local LP = game:GetService('Players').LocalPlayer
+    --// Physics Settings
     settings().Physics.PhysicsEnvironmentalThrottle = 1
     settings().Rendering.QualityLevel = 'Level01'
     UserSettings():GetService('UserGameSettings').MasterVolume = 0
+    -- Comment line 7 if you want to be able to hear your game, keep it the same if you're using it for bots.
     
+    --// Hidden Functions
     setsimulationradius(0, 0)
     setfpscap(1)
-    print("setting fps here")
     
+    --// Physical/UI Derender
     for _, v in next, game:GetDescendants() do
         if v:IsA('Workspace') then
             sethiddenproperty(v, 'StreamingTargetRadius', 64)
@@ -93,6 +128,7 @@ end)()
             v:ClearAllChildren()
         end
     end
+    
     local WorkspaceChildAdded;WorkspaceChildAdded = workspace.DescendantAdded:Connect(function(v)
         wait()
         if v:IsA('Model') then
@@ -138,30 +174,8 @@ end)()
             v.Volume = 0
         end
     end)
- end)()
+end)
 
- coroutine.wrap(function()
-    repeat
-        wait()
-    until game:IsLoaded()
-    local function Check(v)
-        if v:IsA'Part' then
-            v.Material = Enum.Material.Plastic;
-        elseif v.ClassName:match'Light' then
-            v:Destroy'';
-        elseif v.ClassName:match'Effect' then
-            pcall(function()
-                v.Enabled = false;
-            end);
-        end;
-    end;
-    local Lighting = game:GetService'Lighting';
-    for i, v in next, Lighting:GetChildren'' do
-        Check(v);
-    end;
-    Lighting.DescendantAdded:Connect(Check);
-    for i, v in next, workspace:GetDescendants() do
-        Check(v);
-    end;
-    workspace.DescendantAdded:Connect(Check);
- end)()
+spawn(function()
+   print("passed all")
+end)
