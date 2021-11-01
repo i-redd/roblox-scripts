@@ -5,7 +5,7 @@ coroutine.wrap(function()
                     v:Destroy()
                 end
             end
-        wait(60)
+        wait(5)
         until false
 end)()
 
