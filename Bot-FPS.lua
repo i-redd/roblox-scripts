@@ -44,6 +44,8 @@ coroutine.wrap(function()
     repeat
         wait()
     until game:IsLoaded()
+        
+        wait(10)
 
     local RemovePlrGuis = false
     local No3DRendering = false
