@@ -1,13 +1,9 @@
-local vers = "b1.5"
+local vers = "b1.4"
 local PLR = game:GetService("Players").LocalPlayer
 local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 
 coroutine.wrap(function()
     print(vers)
-
-    local PLR = game:GetService("Players").LocalPlayer
-    local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-
     HRP.CFrame = CFrame.new(-869.63232421875, -38.302879333496, -586.50354003906) + Vector3.new(0, 4, 0)
 
     coroutine.wrap(function()
@@ -21,16 +17,15 @@ coroutine.wrap(function()
             until false
     end)()
 
-    -- Respawn TP?
     coroutine.wrap(function()
-        PLR.CharacterAdded:Connect(function()
-            repeat
-                wait()
-            until game.Players.LocalPlayer.Character
-            wait(5)
-            print("TP here?")
-            HRP.CFrame = CFrame.new(-869.63232421875, -38.302879333496, -586.50354003906) + Vector3.new(0, 4, 0)
+        PLR.CharacterAdded:Connect(function(char)
+            char:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(-870, -38, -586) + Vector3.new(0, 5, 0)
         end)
+    end)()
+
+    coroutine.wrap(function()
+        warn"no bot url yet"
+        --loadstring(game:HttpGet(""))()
     end)()
 
 end)()
