@@ -1,4 +1,4 @@
-local vers = "b1.3"
+local vers = "b1.4"
 local PLR = game:GetService("Players").LocalPlayer
 local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 
