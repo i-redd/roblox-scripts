@@ -26,7 +26,7 @@ coroutine.wrap(function()
         PLR.CharacterAdded:Connect(function()
             repeat
                 wait()
-            until HRP
+            until game.Players.LocalPlayer.Character
             HRP.CFrame = CFrame.new(-869.63232421875, -38.302879333496, -586.50354003906) + Vector3.new(0, 4, 0)
         end)
     end)()
