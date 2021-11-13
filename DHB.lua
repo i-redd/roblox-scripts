@@ -4,7 +4,7 @@ local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 
 coroutine.wrap(function()
 
-    print("1")
+    print("TEST")
     print(vers)
 
     local PLR = game:GetService("Players").LocalPlayer
