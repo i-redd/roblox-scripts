@@ -1,4 +1,4 @@
-local vers = "b1.4"
+local vers = "b1.5"
 local PLR = game:GetService("Players").LocalPlayer
 local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 
@@ -27,6 +27,8 @@ coroutine.wrap(function()
             repeat
                 wait()
             until game.Players.LocalPlayer.Character
+            wait(5)
+            print("TP here?")
             HRP.CFrame = CFrame.new(-869.63232421875, -38.302879333496, -586.50354003906) + Vector3.new(0, 4, 0)
         end)
     end)()
