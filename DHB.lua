@@ -1,8 +1,11 @@
-vers = "1.2"
+local vers = "1.2"
+local PLR = game:GetService("Players").LocalPlayer
+local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 
 coroutine.wrap(function()
 
-    print("1 "..vers)
+    print("1")
+    print(vers)
 
     local PLR = game:GetService("Players").LocalPlayer
     local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
