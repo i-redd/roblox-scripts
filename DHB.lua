@@ -1,4 +1,4 @@
-local vers = "b1.4"
+local vers = "b1.9"
 local PLR = game:GetService("Players").LocalPlayer
 local HRP = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
 
@@ -24,8 +24,7 @@ coroutine.wrap(function()
     end)()
 
     coroutine.wrap(function()
-        warn"no bot url yet"
-        --loadstring(game:HttpGet(""))()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/W9K/roblox-scripts/main/exec'))()
     end)()
 
 end)()
