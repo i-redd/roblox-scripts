@@ -1,22 +1,20 @@
-
-
-    getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}
-	getgenv().AimlockKey = "q"
-	getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
-	getgenv().ThirdPerson = true 
-	getgenv().FirstPerson = true
-	getgenv().TeamCheck = false -- Check if Target is on your Team (True means it wont lock onto your teamates, false is vice versa) (Set it to false if there are no teams)
-	getgenv().PredictMovement = true -- Predicts if they are moving in fast velocity (like jumping) so the aimbot will go a bit faster to match their speed 
-	getgenv().PredictionVelocity = 7
-	getgenv().OldAimPart = "HumanoidRootPart"
-	getgenv().CheckIfJumped = true
-	getgenv().Multiplier = -0.27
+getgenv().AimPart = "HumanoidRootPart" -- For R15 Games: {UpperTorso, LowerTorso, HumanoidRootPart, Head} | For R6 Games: {Head, Torso, HumanoidRootPart}
+getgenv().AimlockKey = "q"
+getgenv().AimRadius = 30 -- How far away from someones character you want to lock on at
+getgenv().ThirdPerson = true 
+getgenv().FirstPerson = true
+getgenv().TeamCheck = false -- Check if Target is on your Team (True means it wont lock onto your teamates, false is vice versa) (Set it to false if there are no teams)
+getgenv().PredictMovement = true -- Predicts if they are moving in fast velocity (like jumping) so the aimbot will go a bit faster to match their speed 
+getgenv().PredictionVelocity = 7
+getgenv().OldAimPart = "HumanoidRootPart"
+getgenv().CheckIfJumped = true
+getgenv().Multiplier = -0.27
 
 local ui_options = {
 	main_color = Color3.fromRGB(41, 74, 122),
 	min_size = Vector2.new(400, 300),
 	toggle_key = Enum.KeyCode.RightShift,
-	can_resize = true,
+	can_resize = false,
 }
 
 do
@@ -30,7 +28,6 @@ local imgui = Instance.new("ScreenGui")
 local Prefabs = Instance.new("Frame")
 local Label = Instance.new("TextLabel")
 local Window = Instance.new("ImageLabel")
-local Resizer = Instance.new("Frame")
 local Bar = Instance.new("Frame")
 local Toggle = Instance.new("ImageButton")
 local Base = Instance.new("ImageLabel")
@@ -132,15 +129,6 @@ Window.Image = "rbxassetid://2851926732"
 Window.ImageColor3 = Color3.new(0.0823529, 0.0862745, 0.0901961)
 Window.ScaleType = Enum.ScaleType.Slice
 Window.SliceCenter = Rect.new(12, 12, 12, 12)
-
-Resizer.Name = "Resizer"
-Resizer.Parent = Window
-Resizer.Active = true
-Resizer.BackgroundColor3 = Color3.new(1, 1, 1)
-Resizer.BackgroundTransparency = 1
-Resizer.BorderSizePixel = 0
-Resizer.Position = UDim2.new(1, -20, 1, -20)
-Resizer.Size = UDim2.new(0, 20, 0, 20)
 
 Bar.Name = "Bar"
 Bar.Parent = Window
@@ -989,78 +977,10 @@ function library:AddWindow(title, options)
 				RS.Heartbeat:Wait()
 			end
 		end)
-
 	end
-
-	local Resizer = Window:WaitForChild("Resizer")
 
 	local window_data = {}
 	Window.Draggable = true
-
-	do -- Resize Window
-		local oldIcon = mouse.Icon
-		local Entered = false
-		Resizer.MouseEnter:Connect(function()
-			Window.Draggable = false
-			if options.can_resize then
-				oldIcon = mouse.Icon
-				-- mouse.Icon = "http://www.roblox.com/asset?id=4745131330"
-			end
-			Entered = true
-		end)
-
-		Resizer.MouseLeave:Connect(function()
-			Entered = false
-			if options.can_resize then
-				mouse.Icon = oldIcon
-			end
-			Window.Draggable = true
-		end)
-
-		local Held = false
-		UIS.InputBegan:Connect(function(inputObject)
-			if inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
-				Held = true
-
-				spawn(function() -- Loop check
-					if Entered and Resizer.Active and options.can_resize then
-						while Held and Resizer.Active do
-
-							local mouse_location = gMouse()
-							local x = mouse_location.X - Window.AbsolutePosition.X
-							local y = mouse_location.Y - Window.AbsolutePosition.Y
-
-							--
-							if x >= options.min_size.X and y >= options.min_size.Y then
-								Resize(Window, {
-									Size = UDim2.new(0, x, 0, y)
-								}, options.tween_time)
-							elseif x >= options.min_size.X then
-								Resize(Window, {
-									Size = UDim2.new(0, x, 0, options.min_size.Y)
-								}, options.tween_time)
-							elseif y >= options.min_size.Y then
-								Resize(Window, {
-									Size = UDim2.new(0, options.min_size.X, 0, y)
-								}, options.tween_time)
-							else
-								Resize(Window, {
-									Size = UDim2.new(0, options.min_size.X, 0, options.min_size.Y)
-								}, options.tween_time)
-							end
-
-							RS.Heartbeat:Wait()
-						end
-					end
-				end)
-			end
-		end)
-		UIS.InputEnded:Connect(function(inputObject)
-			if inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
-				Held = false
-			end
-		end)
-	end
 
 	do -- [Open / Close] Window
 		local open_close = Window:FindFirstChild("Bar"):FindFirstChild("Toggle")
@@ -2465,9 +2385,9 @@ do
 		
 		end)
 
-		bodySelect:Add("Head")
+		bodySelect:Add("Head (R6)")
 		bodySelect:Add("UpperTorso")
-		bodySelect:Add("HumanoidRootPart")
+		bodySelect:Add("HumanoidRootPart (R6)")
 		bodySelect:Add("LowerTorso")
 
     --// DISABLE ENABLE TOGGLES
