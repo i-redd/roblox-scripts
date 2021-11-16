@@ -2178,7 +2178,8 @@ do
             getgenv().TeamCheck = state
         end)
 
-        aimlockTab:AddTextBox("Prediction", function(a)
+		aimlockTab:AddLabel("\nHigher ping = Lower number\n")
+        aimlockTab:AddTextBox("Prediction (Default is 7)", function(a)
 		
             getgenv().PredictionVelocity = tostring(a)
 		
