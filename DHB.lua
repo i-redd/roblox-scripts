@@ -1,28 +1,28 @@
-repeat 
-    wait() 
-until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
 
-local v = 1
-local PLR = game:GetService("Players").LocalPlayer
-local HRP = PLR.Character.HumanoidRootPart
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+settings().Physics.PhysicsEnvironmentalThrottle = 1
+settings().Rendering.QualityLevel = 'Level01'
+UserSettings():GetService('UserGameSettings').MasterVolume = 0
 
-HRP.CFrame = CFrame.new(-869.63232421875, -38.302879333496, -586.50354003906) + Vector3.new(0, 4, 0)
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
 
-coroutine.wrap(function()
-	coroutine.wrap(function()
-		repeat
-			for i, v in pairs(game.Workspace.Ignored.Drop:GetChildren()) do
-					if v.Name == "MoneyDrop" then
-						v:Destroy()
-					end
-				end
-			wait(5)
-			until false
-	end)()
-	
-	coroutine.wrap(function()
-		PLR.CharacterAdded:Connect(function(char)
-			char:WaitForChild("HumanoidRootPart").CFrame = CFrame.new(-870, -38, -586) + Vector3.new(0, 5, 0)
-		end)
-	end)()
-end)()
+for i,v in pairs(g:GetDescendants()) do
+	if v:IsA("Part") or v:IsA("Union") or v:IsA("MeshPart") then
+		v.Material = "Plastic"
+	v.Reflectance = 0
+elseif v:IsA("Decal") then 
+    v:Destroy()
+elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then 
+    v.Lifetime = NumberRange.new(0)
+	end
+end
