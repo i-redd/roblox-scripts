@@ -6,7 +6,7 @@ getgenv().webhook1 = ''
 getgenv().msg = '<@1>' -- outside embed message :shrug: maybe @ yourself?
 
 make file in autoexec and put this:
-loadstring(game:HttpGet('a'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/W9K/roblox-scripts/main/DHC/clientkicklogger.lua'))()
 
 Obfuscated with MoonSec V2 discord.gg/gQEH2uZxUk 
 
