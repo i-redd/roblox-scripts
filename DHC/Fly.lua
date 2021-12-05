@@ -85,7 +85,7 @@ e1=mouse.KeyDown:connect(function(key)
 		keys.a=true
 	elseif key=="d" then
 		keys.d=true
-	elseif key=="x" then
+	elseif key=="c" then
 		if flying==true then
 			flying=false
 		else
