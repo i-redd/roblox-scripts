@@ -1,3 +1,4 @@
 hello = { 
     ["sashasmoon"] = 418237714,
 }
+return hello
