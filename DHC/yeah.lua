@@ -12,5 +12,6 @@ hello = {
     ["m0kerlijp"] = 2366880667, -- 544506446537031682 admin whitelist
     ["PercCrush"] = 3059801801,
     ["DAN_XDN"] = 218371468, -- 327670978186444800 support
+    ["skvulI"] = 2552920865,
 }
 return hello
